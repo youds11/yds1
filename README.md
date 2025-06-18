@@ -1,30 +1,26 @@
-# Lane and Car Detection System Using YOLOv8 and OpenCV
+YOLOv8 및 OpenCV를 활용한 차선 및 차량 감지 시스템
+개요
+이 프로젝트는 YOLOv8 (You Only Look Once) 및 OpenCV를 사용하여 차선 및 차량 감지 시스템을 구축하는 방법을 보여줍니다. 이 시스템은 도로 차선을 감지하고 차량을 식별하며 카메라로부터의 거리를 추정할 수 있습니다. 컴퓨터 비전 기술과 딥러닝 기반 객체 감지를 결합하여 도로 환경에 대한 포괄적인 이해를 제공합니다.
 
-## Overview
-This project demonstrates how to build a lane and car detection system using YOLOv8 (You Only Look Once) and OpenCV. The system can detect road lanes and identify vehicles, estimating their distance from the camera. It combines computer vision techniques and deep learning-based object detection to provide a comprehensive understanding of road environments.
-
-## Key Features
-- **Lane Detection**: Detects road lanes using edge detection and Hough Line Transformation.
-- **Car Detection**: Identifies vehicles using YOLOv8, drawing bounding boxes around them.
-- **Distance Estimation**: Calculates the distance of detected cars from the camera based on bounding box size.
+주요 기능
+차선 감지: 에지(Edge) 감지 및 허프 변환(Hough Line Transformation)을 사용하여 도로 차선을 감지합니다.
+차량 감지: YOLOv8을 사용하여 차량을 식별하고, 차량 주변에 경계 상자를 그립니다.
+거리 추정: 감지된 차량의 경계 상자 크기를 기반으로 카메라로부터의 거리를 계산합니다.
 
 # Installation
-1. Clone the repository:
-   ```
-    git clone https://github.com/yourusername/lane-car-detection-yolov8.git
-    ```
-2. Install the dependencies:
+
+1. 종속성 설치 :
    ```
    pip install opencv-python-headless numpy ultralytics
    ```
-3. Run the video.py file.
+2. video.py 파일을 실행한다.
    
-# How It Works
-## 1. Lane Detection Pipeline
-The lane detection process consists of the following steps:
+# 실행 단계
+## 1. 차선 감지 pip
+차선 감지 프로세스는 다음 단계로 구성됩니다:
 
-**Step 1:** Masking the Region of Interest (ROI)
-Only the lower part of the image (where lanes are typically visible) is processed.
+## 1단계: 관심 영역(ROI) 마스킹
+이미지의 하단 부분(일반적으로 차선이 보이는 부분)만 처리합니다.
 ```
 def region_of_interest(img, vertices):
     mask = np.zeros_like(img)
@@ -33,14 +29,14 @@ def region_of_interest(img, vertices):
     masked_image = cv2.bitwise_and(img, mask)
     return masked_image
 ```
-**Step 2:** Edge Detection using Canny
-We convert the image to grayscale and apply Canny Edge Detection to highlight the edges.
+## 2단계: 캐니(Canny)를 사용한 에지 감지
+이미지를 회색(gray)로 변환하고 캐니에지(Canny Edge)감지를 적용하여 에지를 강조합니다.
 ```
 gray_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 cannyed_image = cv2.Canny(gray_image, 100, 200)
 ```
-**Step 3:** Hough Line Transformation
-Hough Line Transformation is applied to detect line segments representing the lanes.
+## 3단계: 허프 선 변환
+차선을 나타내는 선을 감지하기 위해 허프 선 변환을 적용합니다.
 ```
 lines = cv2.HoughLinesP(
     cropped_image,
@@ -52,7 +48,8 @@ lines = cv2.HoughLinesP(
     maxLineGap=25
 )
 ```
-## 2. Car Detection Using YOLOv8
+## YOLOv8을 사용한 차량 감지
+
 **Step 1:** Load the YOLOv8 Model
 We use a pre-trained YOLOv8 model to detect cars in each frame.
 ```
