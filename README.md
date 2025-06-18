@@ -3,6 +3,9 @@
 ## 개요
 이 프로젝트는 YOLOv8 (You Only Look Once) 및 OpenCV를 사용하여 차선 및 차량 감지 시스템을 구축하는 방법을 보여줍니다. 이 시스템은 도로 차선을 감지하고 차량을 식별하며 카메라로부터의 거리를 추정할 수 있습니다. 컴퓨터 비전 기술과 딥러닝 기반 객체 감지를 결합하여 도로 환경에 대한 포괄적인 이해를 제공합니다.
 
+![image](https://github.com/user-attachments/assets/b7b2e268-10e1-4b56-9e41-5663abc67e54)
+
+
 ## 주요 기능
 **차선 감지:** 에지(Edge) 감지 및 허프 변환(Hough Line Transformation)을 사용하여 도로 차선을 감지합니다.
 
