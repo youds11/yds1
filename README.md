@@ -17,7 +17,7 @@
    pip install opencv-python-headless numpy ultralytics
    ```
    
-2. video.py 파일을 실행한다.
+2. **video.py** 파일을 실행한다.
    
 # 실행 단계
 
@@ -98,8 +98,6 @@ while cap.isOpened():
     for result in results:
         # Draw bounding boxes and estimate distance
     cv2.imshow('Lane and Car Detection', lane_frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
 ```
 
 # 결과
